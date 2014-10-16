@@ -1,5 +1,7 @@
 # 기레기 버튼
 
+[**데모 체험**](http://htmlpreview.github.io/?https://github.com/rainygirl/giregi/blob/master/index.html) | [**일간워스트에서 체험**](http://ilwar.com/recent)
+
 ## 기레기 버튼이란?
 * 커뮤니티 게시물을 인터넷신문 기사 형식으로 쉽게 가공하는 스크립트입니다.
 * 2014년 10월 8일부터 [커뮤니티사이트 일간워스트 ilwar.com](http://ilwar.com) 에 적용되어 활용되고 있습니다.
@@ -19,11 +21,6 @@
 
 ## 필요 기술
 * Javascript로 개발되었습니다. 원리가 간단하기 때문에 문장을 가공할 수 있는 어떤 언어로든 쉽게 제작 가능합니다.
-
-## Demo
-----
-* [**데모 체험**](https://raw.githubusercontent.com/rainygirl/giregi/master/index.html)
-* [**일간워스트에서 체험**](http://ilwar.com/recent)
 
 ## Credits
 * [rainygirl](http://rainygirl.com)
