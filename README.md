@@ -6,7 +6,7 @@
 * 커뮤니티 게시물을 인터넷신문 기사 형식으로 쉽게 가공하는 스크립트입니다.
 * 2014년 10월 8일부터 [커뮤니티사이트 일간워스트 ilwar.com](http://ilwar.com) 에 적용되어 활용되고 있습니다.
 
-<img src="https://raw.githubusercontent.com/rainygirl/giregi/master/sample.png">
+![기레기 예시 스크린 샷](https://raw.githubusercontent.com/rainygirl/giregi/master/sample.png)
 
 ## 인터넷신문 기사 형식이란?
 * "최근 한 온라인 커뮤니티에서 ㅇㅇㅇ 가 화제가 되고있다. ~~~ 이제 네티즌들은 'ㅇㅇㅇ 재밌네요' 'ㅇㅇㅇ 신기해요' 등의 반응을 보이고 있다." 는 형식으로 작성되는 퍼가기 기사를 뜻합니다.
