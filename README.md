@@ -26,3 +26,6 @@
 * [rainygirl](http://rainygirl.com)
 * [일간워스트 공지](http://ilwar.com/notice/172108)
 
+## License
+* MIT
+* 자유롭게 수정해서 더 채워주세요!
