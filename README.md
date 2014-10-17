@@ -27,8 +27,23 @@
 * 원리가 간단하기 때문에 문장을 가공할 수 있는 어떤 언어로든 쉽게 제작 가능합니다.
 * 이 코드는 [일간워스트](http:/ilwar.com)에서 사용된 것으로, JavaScript 로 구현되었습니다.
 
+## 사용법
+
+다음과 같이 호출하게 되면, \n 로 줄구분된 기레기 String이 return됩니다.
+
+~~~~
+var s = giregi({
+                title: 제목(String),
+                text: 내용(String),
+                nick: 글쓴이 이름(String),
+                day: 날짜(String),
+                sitename: 사이트명(String)
+               });
+~~~~
+
 ## Credits
 * [rainygirl](http://rainygirl.com)
+* [@rainygirl_](https://twitter.com/rainygirl_)
 * [일간워스트 공지](http://ilwar.com/notice/172108)
 
 ## License
