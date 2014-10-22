@@ -1,154 +1,177 @@
-<!doctype html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<title>기레기 버튼 데모</title>
-<style>
-body{
-    padding:20px 40px;
-    background:#f3f3f3
-}
-body,p,h1,h2,h3,h4,h5,h6,textarea,input,label{
-    font-family:'Apple SD Gothic Neo',NanumGothic,'Malgun Gothic',Dotum;
-}
-label{
-    display:block;
-    color:#505050;
-    padding:10px 0
-}
-h2{
-    font-size:.8em;
-    padding-bottom:15px
-}
-textarea,
-input[type=text] {
-    background:white;
-    border:1px solid #ddd;
-    border-radius:5px;
-    box-shadow:0 0 5px #ddd inset;
-    color:#666;
-    padding:5px 10px;
-    width:15em;
-    outline:none;
-    font-size:1.2em;
-    margin-left:15px;
-}
-textarea{
-    width:27em;
-    height:12em;
-    display:block;
-    margin:15px 0 10px 0;
-    padding:10px
-}
-textarea:focus,
-input[type=text]:focus {
-    box-shadow:0 0 5px #f66 inset;
-    border-color:#f66
-}
-input[type=submit] {
-    background:#09f;
-    color:#fff;
-    padding:10px 20px;
-    border:0;
-    font-size:1.2em;
-    margin-top:15px
-}
-input[type=submit]:hover,
-input[type=submit]:focus {
-    background:#06c;
-}
-#form1{
-    width:35em;
-    margin:0 auto;
-    display:block
-}
-.result{
-    width:35em;
-    margin:40px auto;
-    padding:15px;
-    background:#fcc;
-    border:0;
-    box-shadow:none;
-    padding:15px 30px;
-    color:#000;
-    line-height:1.8em
-}
-.credit{
-    text-align:right;
-    padding:15px 0;
-    font-size:.8em;
-    color:#999
-}
-.credit a{
-    color:#99c
-}
-.credit a:focus,
-.credit a:hover{
-    color:#000
-}
-</style>
-</head>
-<body>
-<form id="form1">
-    <h1>
-        기레기 버튼 Demo
-    </h1>
-    <h2>
-        스크립트 몇줄이면 나도 인터넷신문 기자!
-    </h2>
-    <label for="ftitle">
-        제목
-        <input type="text" id="ftitle" value="충청도 관찰사가 계하기를">
-    </label>
-    <label for="ftext">
-        내용
-        <textarea id="ftext">
+<!DOCTYPE HTML>
+<html lang="ko" dir="ltr">
+	<head>
+		<title>기레기 버튼 데모</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<style type="text/css">
+		body {
+			padding: 20px 40px;
+			background: #f3f3f3;
+		}
+		body,p,h1,h2,h3,h4,h5,h6,textarea,input,label {
+			font-family: 'Apple SD Gothic Neo', NanumGothic, 'Malgun Gothic', Dotum;
+		}
+		label {
+			display: block;
+			color: #505050;
+			padding: 10px 0;
+		}
+		h2 {
+			font-size: .8em;
+			padding-bottom: 15px;
+		}
+		textarea, label input {
+			background: white;
+			border: 1px solid #ddd;
+
+			border-radius: 5px;
+			box-shadow: 0 0 5px #ddd inset;
+			color: #666;
+			padding: 5px 10px;
+			width: 15em;
+			outline: none;
+			font-size: 1.2em;
+			margin-left: 15px;
+		}
+		textarea {
+			width: 27em;
+			height: 12em;
+			display: block;
+			margin: 15px 0 10px 0;
+			padding: 10px;
+		}
+		textarea:focus, label input:focus {
+		    box-shadow: 0 0 5px #f66 inset;
+		    border-color: #f66;
+		}
+		.button {
+			background: #09f;
+			color: #fff;
+			padding: 10px 20px;
+			border: 0;
+			font-size: 1.2em;
+			margin-top: 15px
+		}
+		#erase_all {
+			background: #f90;
+		}
+		.button:hover, .button:focus {
+			background: #06c;
+		}
+		#erase_all:hover, #erase_all:focus {
+			background: #c60;
+		}
+		#giregi_form {
+			width: 35em;
+			margin: 0 auto;
+			display: block;
+		}
+		.result {
+			width: 35em;
+			margin: 40px auto;
+			padding: 15px;
+			background: #fcc;
+			border: 0;
+			box-shadow: none;
+			padding: 15px 30px;
+			color: #000;
+			line-height: 1.8em;
+		}
+		.credit{
+			text-align: right;
+			padding: 15px 0;
+			font-size: .8em;
+			color: #999;
+		}
+		.credit a{
+			color: #99c;
+		}
+		.credit a: focus,
+		.credit a: hover{
+			color: #000;
+		}
+		</style>
+	</head>
+	<body>
+		<form id="giregi_form">
+			<h1>기레기 버튼 Demo</h1>
+			<h2>스크립트 몇줄이면 나도 인터넷신문 기자!</h2>
+			<label> <!-- 'for' attribute is unnecessary if input is included in a label -->
+				제목
+				<input type="text" id="ftitle" value="충청도 관찰사가 계하기를" />
+			</label>
+			<label>
+				내용
+				<textarea id="ftext">
 공주에 코끼리를 기르는 종이 코끼리에 채여서 죽었습니다.
 그것이 나라에 유익한 것이 없고, 먹이는 꼴과 콩이 다른 짐승보다 열 갑절이나 되어,
 하루에 쌀 2말, 콩 1말 씩이온즉, 1년에 소비되는 쌀이 48섬이며, 콩이 24섬입니다. 
 화를 내면 사람을 해치니, 이익이 없을 뿐 아니라, 도리어 해가 되니, 
 바다 섬 가운데 있는 목장에 내놓으소서.
-        </textarea>
-    </label>
-    <label for="fnick">
-        글쓴이
-        <input type="text" id="fnick" value="아무개">
-    </label>
-    <label for="fsitename">
-        사이트명
-        <input type="text" id="fsite" value="커뮤니티 일간워스트">
-    </label>
-    <input type="submit" value="기레기 생성!" accesskey="s">
-    <div class="credit">
-        made by <a href="http://rainygirl.com" target="_blank">rainygirl</><br>
-        <a href="http://github.com/rainygirl/giregi" target="_blank">Github</a>
-    </div>
-</form>
+				</textarea>
+			</label>
+			<label>
+				글쓴이
+				<input type="text" id="fnick" value="아무개" />
+			</label>
+			<label>
+				사이트명
+				<input type="text" id="fsite" value="커뮤니티 일간워스트" />
+			</label>
+			<input type="submit" class="button" value="기레기 생성!" accesskey="s" />
+			<input type="button" class="button" id="erase_all" value="모두 지우기" accesskey="e" />
+			<div class="credit">
+				Created by <a href="http://rainygirl.com" target="_blank">rainygirl</a><br />
+				<a href="http://github.com/rainygirl/giregi" target="_new"><img style="width: 16px; height: 16px" src="https://help.github.com/assets/images/site/invertocat.png" /> GitHub</a>
+			</div>
+		</form>
 
-<script type="text/javascript" src="giregi.js"></script>
-<script type="text/javascript">
-//<![CDATA[
-document.getElementById('form1').onsubmit=function(){
-    var n=giregi({title:document.getElementById('ftitle').value,
-                  text:document.getElementById('ftext').value,
-                  nick:document.getElementById('fnick').value,
-                  day:'최근',
-                  sitename:document.getElementById('fsite').value
-                 });
-    n=['<p>',n.replace(/\n/gi,'</p><p>'),'</p>'].join('');
+		<script type="text/javascript" src="giregi.js"></script>
+		<script type="text/javascript">
+		<!--
+		(function() { // NOT to be confused with jQuery.
+			var $ = function(a) {
+				return document.getElementById(a);
+			}
+			$('giregi_form').onsubmit = function() {
+				var n = giregi({title: $('ftitle').value,
+					  text: $('ftext').value,
+					  nick: $('fnick').value,
+					  day: '최근',
+					  sitename: $('fsite').value
+				});
+				n = '<p>' + n.replace(/\n/g, '</p><p>') + '</p>';
 
-    if(document.getElementById('result')==null) {
-        var t=document.createElement('div');
-        t.className='result';
-        t.innerHTML=n;
-        document.body.appendChild(t);
-    } else {
-        document.getElementById('result').innerHTML=n;
-    }
-    window.scrollTo(0,5000);
-    return false;
-}
-//]]>
-</script>
-</body>
+				if (!$('result')) {
+					var t = document.createElement('div');
+					t.className = 'result';
+					t.innerHTML = n;
+					document.body.appendChild(t);
+				} else {
+					document.getElementById('result').innerHTML = n;
+				}
+				window.scrollTo(0, 5000);
+				return false;
+			}
+			$('erase_all').onclick = function() {
+				var i = 0, e;
+				if ($('result')) {
+					$('result').innerHTML = "";
+					return;
+				}
+				if (document.getElementsByClassName) {
+					var l = document.getElementsByClassName("result");
+					for (; i < l.length; l[i++].remove());
+					return;
+				}
+				for (; i < document.all.length; i++) {
+					e = document.all[i];
+					if (e.className == "result") e.remove();
+				}
+			};
+		})();
+		//-->
+		</script>
+	</body>
 </html>
