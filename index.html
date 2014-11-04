@@ -97,6 +97,10 @@
 		<form id="giregi_form">
 			<h1>기레기 버튼 Demo</h1>
 			<h2>스크립트 몇줄이면 나도 인터넷신문 기자!</h2>
+			<label>
+			    위치와 뉴스 이름
+			    <input type="text" id="fheader" value="서울=일워뉴스" />
+			</label>
 			<label> <!-- 'for' attribute is unnecessary if input is included in a label -->
 				제목
 				<input type="text" id="ftitle" value="충청도 관찰사가 계하기를" />
@@ -119,6 +123,14 @@
 				사이트명
 				<input type="text" id="fsite" value="커뮤니티 일간워스트" />
 			</label>
+			<label>
+			    기자 팀
+			    <input type="text" id="fteam" value="온라인이슈팀" />
+			</label>
+			<label>
+			    저작권
+			    <input type="text" id="fcopyright" value="정론직필 정통언론 일워뉴스 ilwar.com" />
+			</label>
 			<input type="submit" class="button" value="기레기 생성!" accesskey="s" />
 			<input type="button" class="button" id="erase_all" value="모두 지우기" accesskey="e" />
 			<div class="credit">
@@ -139,7 +151,10 @@
 					  text: $('ftext').value,
 					  nick: $('fnick').value,
 					  day: '최근',
-					  sitename: $('fsite').value
+					  sitename: $('fsite').value,
+					  header: $('fheader').value,
+					  team: $('fteam').value,
+					  copyright: $('fcopyright').value
 				});
 				n = '<p>' + n.replace(/\n/g, '</p><p>') + '</p>';
 
