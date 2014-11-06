@@ -37,7 +37,9 @@ var s = giregi({
                 text: 내용(String),
                 nick: 글쓴이 이름(String),
                 day: 날짜(String),
-                sitename: 사이트명(String)
+                sitename: 사이트명(String),
+                feelings: {
+                  happy: ,
                });
 ~~~~
 
