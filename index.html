@@ -3,25 +3,32 @@
 	<head>
 		<title>기레기 버튼 데모</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<style type="text/css">
 		<!--
 		body {
 			padding: 20px 40px;
 			background: #f3f3f3;
 		}
-		body, p, h1, h2, h3, h4,
-			h5, h6, textarea, input, label {
+		body, p, h1, h2, h3, h4, h5, h6,
+			textarea, input, label, legend {
 			font-family: 'Apple SD Gothic Neo', NanumGothic, 'Malgun Gothic', Dotum;
+		}
+		label, legend {
+			color: #505050;
 		}
 		label {
 			display: block;
-			color: #505050;
 			padding: 10px 0;
 		}
 		h2 {
 			font-size: .8em;
 			padding-bottom: 15px;
+		}
+		fieldset {
+			border: 1px solid #777;
+			border-radius: 10px;
+			box-shadow: 0 0 5px #ddd inset;
 		}
 		textarea, label input {
 			background: white;
@@ -51,6 +58,7 @@
 			color: #fff;
 			padding: 10px 20px;
 			border: 0;
+			width: auto;
 			font-size: 1.2em;
 			margin-top: 15px
 		}
@@ -113,8 +121,12 @@
 	<body>
 		<form id="giregi_form">
 			<h1>기레기 버튼 Demo</h1>
-			<h2>스크립트 몇 줄이면 나도 인터넷신문 기자!</h2>
-			<label> <!-- for="" is unnecessary if label has <input> as a child. -->
+			<h2>스크립트 <u>몇줄</u>이면 <i>나도</i> 인터넷신문 기자!</h2>
+			<label>
+			    위치와 뉴스 이름
+			    <input type="text" id="fheader" value="서울=일워뉴스" />
+			</label>
+			<label>
 				제목
 				<input type="text" id="ftitle" value="충청도 관찰사가 계하기를" />
 			</label>
@@ -134,42 +146,53 @@
 				사이트명
 				<input type="text" id="fsite" value="커뮤니티 일간워스트" />
 			</label>
-			<div id="df">
+			<fieldset>
+				<legend>네티즌들의 반응</legend>
+				<div id="df">
+					<label>
+						<input type="checkbox" id="ffun" checked="checked" />
+						재미있음
+					</label>
+					<label>
+						<input type="checkbox" id="fhappy" />
+						행복함
+					</label>
+					<label>
+						<input type="checkbox" id="fam" />
+						놀람
+					</label>
+					<label>
+						<input type="checkbox" id="fsad" />
+						슬픔
+					</label>
+					<label>
+						<input type="checkbox" id="fupset" />
+						화남
+					</label>
+					<label>
+						<input type="checkbox" id="fns" checked="checked" />
+						황당
+					</label>
+				</div>	
 				<label>
-					<input type="checkbox" id="ffun" />
-					재미있음
+					추가 반응
+					<input type="text" id="fcmt" value="신박하네요. 연기하나." />
 				</label>
-				<label>
-					<input type="checkbox" id="fhappy" />
-					행복함
-				</label>
-				<label>
-					<input type="checkbox" id="fam" />
-					놀람
-				</label>
-				<label>
-					<input type="checkbox" id="fsad" />
-					슬픔
-				</label>
-				<label>
-					<input type="checkbox" id="fupset" />
-					화남
-				</label>
-				<label>
-					<input type="checkbox" id="fns" />
-					황당
-				</label>
-			</div>	
+			</fieldset>
 			<label>
-				추가로 넣을 댓글
-				<input type="text" id="fcmt" value="웃기다. 재미있어요. 신기하네요." />
+				기자 팀
+				<input type="text" id="fteam" value="온라인이슈팀" />
+			</label>
+			<label>
+				저작권
+				<input type="text" id="fcopyright" value="정론직필 정통언론 일워뉴스 ilwar.com" />
 			</label>
 			<input type="submit" class="button" value="기레기 생성!" accesskey="s" />
 			<input type="button" class="button" id="erase_all" value="모두 지우기" accesskey="e" />
 			<div class="credit">
 				Created by <a href="http://rainygirl.com" target="_new">rainygirl</a><br />
 				<a href="http://github.com/rainygirl/giregi" target="_new">
-					<img style="width: 16px; height: 16px" src="https://help.github.com/assets/images/site/invertocat.png" />
+					<img width="16" height="16" src="https://help.github.com/assets/images/site/invertocat.png" />
 					GitHub
 				</a>
 			</div>
@@ -190,6 +213,9 @@
 						nick: $('fnick').value,
 						day: '최근',
 						sitename: $('fsite').value,
+						header: $('fheader').value,
+						team: $('fteam').value,
+						copyright: $('fcopyright').value,
 						feelings: {
 							funny: $('ffun').checked,
 							happy: $('fhappy').checked,
@@ -200,6 +226,8 @@
 						},
 						comments: $('fcmt').value,
 					});
+				// Do NOT erase <a> tag, <a> 태그 지우지 마세요.
+				// which is necessary for locating the generated news by hash. # 해시로 생성된 기사로 스크롤하는 데에 필요합니다.
 				n = '<a id="' + name + '" name="' + name + '">&nbsp;</a><p>' + n.replace(/\r\n?|\n/g, '</p>\n<p>') + '</p>';
 
 				if (!$('result')) {

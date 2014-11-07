@@ -1,42 +1,47 @@
 var GIREGI_DEFAULTS = {
+	header: '서울=일워뉴스',
 	day: '최근',
 	sitename: '커뮤니티 일간워스트',
 	title: '기레기 버튼',
 	text: '길들인 코끼리를 순천부 장도에 방목하는데,\n 수초를 먹지 않아 날로 수척하여지고,\n 사람을 보면 눈물을 흘립니다.',
 	nick: '병조판서 유정현',
-	feelings: {funny: true, happy: false, amazed: false, sad: false, upset: false, nonsense: true},
-	comments: ''
+	team: '온라인이슈팀',
+	copyright: '정론직필 정통언론 일워뉴스 ilwar.com',
+	feelings: {none: false, funny: true, happy: false, amazed: false, sad: false, upset: false, nonsense: false},
+	comments: '이게 뭐지. 놀라워요. 처음 본다.'
 };
-var GIREGI_FEEL_TO_COMMENT = {
+var GIREGI_FEELINGS_TO_COMMENT = {
+	none: ['진짜 대단하다', '정말 멋지다', '감사해요', '궁금하네요'],
 	funny: ['웃기네요', '웃기다', '정말 재밌네요', '정말 재밌다', 'ㅋㅋㅋ'],
-	happy: ['참 기쁘네요', '좋아요', '좋네요' '기쁘다', '기뻐요', 'ㅎㅎ'],
+	happy: ['참 기쁘네요', '좋아요', '좋네요', '기쁘다', '기뻐요', 'ㅎㅎ'],
 	amazed: ['진짜 놀랍네요', 'ㄷㄷ', '놀랍다'],
 	sad: ['슬프네요', '슬퍼요', '안구에 습기가', '눈물이 날 것 같아요', 'ㅠㅠ'],
 	upset: ['짜증나네요', 'ㅡㅡ', '화나요', '화가 나네요'],
-	nonsense: ['에이 설마', '정말이요?', '설마요', '참 대박이다', '안 믿겨져요']
+	nonsense: ['에이 설마', '황당하네요.', '정말이요?', '설마요', '참 대박이다', '안 믿겨져요']
 };
 function giregi(obj) {
 	"use strict";
 
-	(function() {
+	// Never use <Class>.prototype, since it may affect/contaminate the code using this library.
+	// <Class>.prototype을 사용하면 기레기를 쓰는 다른 코드에 영향을 끼칠 수 있기 때문에 쓰지 않는 것이 좋습니다.
+	var trim = (function() {
 		var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
-		String.prototype.trim = function() {
-			return this.replace(rtrim, "");
+		return function(a) {
+			return a.replace(rtrim, "");
 		}
 	})();
-	Array.prototype.shuffle = function() {
-		for (var j, x, i = this.length; i; j = Math.floor(Math.random() * i), x = this[--i], this[i] = this[j], this[j] = x);
+	function shuffle(o) {
+		for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
 		return o;
 	};
-	Array.prototype.pushArray = function() {
-		for (var n = 0; n < arguments.length; n++) {
-			var i, a = arguments[n];
-			if (a instanceof Array)
-				for (i = 0; i < a.length; this.push(a[i++]));
-			else
-				this.push(a);
+	function pushArray(a, b) {
+		for (var i = 0; i < b.length; a[a.length] = b[i++]);
+		return a;
+	}
+	if (!Array.prototype.push)
+		Array.prototype.push = function() {
+			pushArray(this, arguments);
 		}
-	};
 	if (!obj) {
 		obj = GIREGI_DEFAULTS;
 	} else {
@@ -48,23 +53,28 @@ function giregi(obj) {
 
 	var tail = ['그와 함께 "', '" 라면서,', ' "', '"라고 했다.\n', '또 "', '"라면서, ', '"', '" 라고도 했다.\n', '" 는 등의 장문의 글을 남겼다.\n'];
 	var feels = obj.feelings;
-	var ban = obj.comments.replace(/\s+|(\S)$/g, '$1 ').split(/\. +/g);
+	var ban = obj.comments.replace(/\s+|(\S)$/g, '$1 ').replace(/.\s$/g, '').split(/\.\s+/g);
 	var bf_cde = [];
-	var f2c = GIREGI_FEEL_TO_COMMENT;
+	var f2c = GIREGI_FEELINGS_TO_COMMENT;
 
 	for (var key in f2c) {
-		if (feels[key]) bf_cde.pushArray(
-	var ban = ['진짜 대단하다', '정말 멋지다', '감사해요', '궁금하네요'];
+		if (feels[key])
+			pushArray(bf_cde, f2c[key]);
+	}
+	if (!bf_cde.length)
+		bf_cde = f2c.none;
+	pushArray(ban, shuffle(bf_cde));
+	if (ban.length > 4) ban.length = 4;
 
-	var v_= obj.text.replace(/(<br *\/?>|\r\n?|\n)*/gi, '\n').replace(/<([^>]+)>|(<!--|-->)/g, '').replace('&nbsp;', ' ').split('\n');
+	var v_= obj.text.replace(/(<br *\/?>|\r\n?|\n)+/gi, '\n').replace(/<([^>]+)>|(<!--|-->)/g, '').replace('&nbsp;', ' ').split('\n');
 
 	var news = [], v = [], j = 0;
 
 	for (var i in v_) {
-		if (v[i].replace(/\s/g, '') != '')
-			v.push(v[i].trim());
+		if (v_[i].replace(/\s/g, '') != '')
+			v.push(trim(v_[i]));
 	}
-	news.push(['(서울=일워뉴스) 기레기 기자 = 최근 한 온라인 커뮤니티에 "', obj.title, '" 라는 글이 올라와 네티즌들의 화제를 모으고 있다.\n'].join(''));
+	news.push(['(', obj.header, ') 기레기 기자 = 최근 한 온라인 커뮤니티에 "', obj.title, '" 라는 글이 올라와 네티즌들의 화제를 모으고 있다.\n'].join(''));
 
 	if (v.join('').replace(/\n|\s/g, '').length == 0)
 		news.push([obj.sitename, '의 닉네임 "', obj.nick, '" 라는 이용자가 ', obj.day, ' 올린 글은 화제의 그림을 담고 있으며, '].join(''));
@@ -88,7 +98,7 @@ function giregi(obj) {
 
 	var word = obj.title.split(' ')[0].substring(0, 15);
 
-	news.push(['이에 네티즌들은 "', obj.title, ', ', ban[0], '", "', obj.title, ', ', ban[1], '", "', obj.title, ', ', ban[2], '", "', obj.title, ', ', ban[3], '" 등의 반응을 보였다.\n\n', word, ' ', word, ' ', word, '\n\n온라인이슈팀\n\n<ⓒ정론직필 정통언론 일워뉴스 ilwar.com, 무단전재 배포금지>'].join(''));
+	news.push(['이에 네티즌들은 "', obj.title, ', ', ban[0], '", "', obj.title, ', ', ban[1], '", "', obj.title, ', ', ban[2], '", "', obj.title, ', ', ban[3], '" 등의 다양한 반응을 보였다.\n\n', word, ' ', word, ' ', word, '\n\n', obj.team, '\n\n<ⓒ', obj.copyright, ', 무단전재 배포금지>'].join(''));
 
 	return news.join('');
 }

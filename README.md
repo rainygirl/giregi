@@ -33,14 +33,24 @@
 
 ~~~~
 var s = giregi({
-                title: 제목(String),
-                text: 내용(String),
-                nick: 글쓴이 이름(String),
-                day: 날짜(String),
-                sitename: 사이트명(String),
-                feelings: {
-                  happy: ,
-               });
+                header: 헤드라인(String, default: '서울=일워뉴스')
+                title: 제목(String, default: '기레기 버튼'),
+                text: 내용(String, default: '길들인 코끼리를 순천부 장...'),
+                nick: 글쓴이 이름(String, default: '병조판서 유정현'),
+                day: 날짜(String, default: '최근'),
+                sitename: 사이트명(String, default: '커뮤니티 일간워스트'),
+                team: 팀명(String, default: '온라인이슈팀'),
+                copyright: 저작권(String, default: '정론직필 정통언론 일워뉴스 ilwar.com'),
+                feelings: { // 이 글에 대한 네티즌의 반응(감정), 중복 가능
+                  happy: 행복함?(Boolean, default: false),
+                  funny: 웃김?(Boolean, default: true),
+                  amazed: 놀라움?(Boolean, default: false),
+                  sad: 슬픔?(Boolean, default: false),
+                  upset: 화남?(Boolean, default: false),
+                  nonsense: 황당?(Boolean, default: false)
+                },
+                comments: 기타 네티즌들의 반응(String, default: '이게 뭐지. 놀라워요. 처음 본다.')
+        });
 ~~~~
 
 ## Credits
