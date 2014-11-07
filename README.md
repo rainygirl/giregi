@@ -1,4 +1,4 @@
-# 기레기 버튼
+# 기레기 버튼 (자동 인터넷 기사 생성기)
 
 [**데모 체험**](http://htmlpreview.github.io/?https://github.com/rainygirl/giregi/blob/master/index.html) | [**일간워스트에서 체험**](http://ilwar.com/recent)
 
@@ -53,11 +53,11 @@ var s = giregi({
         });
 ~~~~
 
-## Credits
+## Credits and references
 * [rainygirl](http://rainygirl.com)
 * [@rainygirl_](https://twitter.com/rainygirl_)
 * [일간워스트 공지](http://ilwar.com/notice/172108)
 
 ## License
-* MIT
+* The MIT License (included in the repository)
 * 자유롭게 수정해서 더 채워주세요!
