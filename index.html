@@ -60,7 +60,14 @@
 			border: 0;
 			width: auto;
 			font-size: 1.2em;
-			margin-top: 15px
+			margin-top: 15px;
+			box-shadow: 3px 3px 5px #888;
+		}
+		.button:active {
+			box-shadow: none;
+			position: relative;
+			top: 3px;
+			left: 3px;
 		}
 		#erase_all {
 			background: #f90;
@@ -123,8 +130,8 @@
 			<h1>기레기 버튼 Demo</h1>
 			<h2>스크립트 <u>몇줄</u>이면 <i>나도</i> 인터넷신문 기자!</h2>
 			<label>
-			    위치와 뉴스 이름
-			    <input type="text" id="fheader" value="서울=일워뉴스" />
+				위치와 뉴스 이름
+				<input type="text" id="fheader" value="서울=일워뉴스" />
 			</label>
 			<label>
 				제목
@@ -238,8 +245,7 @@
 				} else {
 					document.getElementById('result').innerHTML = n;
 				}
-				location.href = "#";
-				location.href = "#" + name;
+				location.hash = "#" + name;
 				return false;
 			}
 			$('erase_all').onclick = function() {
