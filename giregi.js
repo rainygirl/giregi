@@ -46,7 +46,7 @@ function giregi(obj) {
 		obj = GIREGI_DEFAULTS;
 	} else {
 		for (var key in GIREGI_DEFAULTS) {
-			if (!obj[key])
+			if (obj[key] === undefined)
 				obj[key] = GIREGI_DEFAULTS[key];
 		}
 	}
