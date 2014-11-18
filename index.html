@@ -3,28 +3,36 @@
 	<head>
 		<title>기레기 버튼 데모</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<style type="text/css">
+		<!--
 		body {
 			padding: 20px 40px;
 			background: #f3f3f3;
 		}
-		body,p,h1,h2,h3,h4,h5,h6,textarea,input,label {
+		body, p, h1, h2, h3, h4, h5, h6,
+			textarea, input, label, legend {
 			font-family: 'Apple SD Gothic Neo', NanumGothic, 'Malgun Gothic', Dotum;
+		}
+		label, legend {
+			color: #505050;
 		}
 		label {
 			display: block;
-			color: #505050;
 			padding: 10px 0;
 		}
 		h2 {
 			font-size: .8em;
 			padding-bottom: 15px;
 		}
+		fieldset {
+			border: 1px solid #777;
+			border-radius: 10px;
+			box-shadow: 0 0 5px #ddd inset;
+		}
 		textarea, label input {
 			background: white;
 			border: 1px solid #ddd;
-
 			border-radius: 5px;
 			box-shadow: 0 0 5px #ddd inset;
 			color: #666;
@@ -42,16 +50,24 @@
 			padding: 10px;
 		}
 		textarea:focus, label input:focus {
-		    box-shadow: 0 0 5px #f66 inset;
-		    border-color: #f66;
+			box-shadow: 0 0 5px #f66 inset;
+			border-color: #f66;
 		}
 		.button {
 			background: #09f;
 			color: #fff;
 			padding: 10px 20px;
 			border: 0;
+			width: auto;
 			font-size: 1.2em;
-			margin-top: 15px
+			margin-top: 15px;
+			box-shadow: 3px 3px 5px #888;
+		}
+		.button:active {
+			box-shadow: none;
+			position: relative;
+			top: 3px;
+			left: 3px;
 		}
 		#erase_all {
 			background: #f90;
@@ -67,6 +83,21 @@
 			margin: 0 auto;
 			display: block;
 		}
+		#df {
+			text-align: center;
+			padding: 0.7em 0;
+		}
+		#df label, #df label input {
+			display: inline !important;
+			padding: 0px;
+			margin: 0px;
+			border: 0px none;
+			box-shadow: none;
+			width: auto;
+		}
+		#df label {
+			margin-right: 10px;
+		}
 		.result {
 			width: 35em;
 			margin: 40px auto;
@@ -78,42 +109,41 @@
 			color: #000;
 			line-height: 1.8em;
 		}
-		.credit{
+		.credit {
 			text-align: right;
 			padding: 15px 0;
 			font-size: .8em;
 			color: #999;
 		}
-		.credit a{
+		.credit a {
 			color: #99c;
 		}
-		.credit a: focus,
-		.credit a: hover{
+		.credit a:focus,
+		.credit a:hover {
 			color: #000;
 		}
+		-->
 		</style>
 	</head>
 	<body>
 		<form id="giregi_form">
 			<h1>기레기 버튼 Demo</h1>
-			<h2>스크립트 몇줄이면 나도 인터넷신문 기자!</h2>
+			<h2>스크립트 <u>몇줄</u>이면 <i>나도</i> 인터넷신문 기자!</h2>
 			<label>
-			    위치와 뉴스 이름
-			    <input type="text" id="fheader" value="서울=일워뉴스" />
+				위치와 뉴스 이름
+				<input type="text" id="fheader" value="서울=일워뉴스" />
 			</label>
-			<label> <!-- 'for' attribute is unnecessary if input is included in a label -->
+			<label>
 				제목
 				<input type="text" id="ftitle" value="충청도 관찰사가 계하기를" />
 			</label>
 			<label>
 				내용
-				<textarea id="ftext">
-공주에 코끼리를 기르는 종이 코끼리에 채여서 죽었습니다.
+				<textarea id="ftext">공주에 코끼리를 기르는 종이 코끼리에 채여서 죽었습니다.
 그것이 나라에 유익한 것이 없고, 먹이는 꼴과 콩이 다른 짐승보다 열 갑절이나 되어,
 하루에 쌀 2말, 콩 1말 씩이온즉, 1년에 소비되는 쌀이 48섬이며, 콩이 24섬입니다. 
 화를 내면 사람을 해치니, 이익이 없을 뿐 아니라, 도리어 해가 되니, 
-바다 섬 가운데 있는 목장에 내놓으소서.
-				</textarea>
+바다 섬 가운데 있는 목장에 내놓으소서.</textarea>
 			</label>
 			<label>
 				글쓴이
@@ -123,19 +153,55 @@
 				사이트명
 				<input type="text" id="fsite" value="커뮤니티 일간워스트" />
 			</label>
+			<fieldset>
+				<legend>네티즌들의 반응</legend>
+				<div id="df">
+					<label>
+						<input type="checkbox" id="ffun" checked="checked" />
+						재미있음
+					</label>
+					<label>
+						<input type="checkbox" id="fhappy" />
+						행복함
+					</label>
+					<label>
+						<input type="checkbox" id="fam" />
+						놀람
+					</label>
+					<label>
+						<input type="checkbox" id="fsad" />
+						슬픔
+					</label>
+					<label>
+						<input type="checkbox" id="fupset" />
+						화남
+					</label>
+					<label>
+						<input type="checkbox" id="fns" checked="checked" />
+						황당
+					</label>
+				</div>	
+				<label>
+					추가 반응
+					<input type="text" id="fcmt" value="신박하네요. 연기하나." />
+				</label>
+			</fieldset>
 			<label>
-			    기자 팀
-			    <input type="text" id="fteam" value="온라인이슈팀" />
+				기자 팀
+				<input type="text" id="fteam" value="온라인이슈팀" />
 			</label>
 			<label>
-			    저작권
-			    <input type="text" id="fcopyright" value="정론직필 정통언론 일워뉴스 ilwar.com" />
+				저작권
+				<input type="text" id="fcopyright" value="정론직필 정통언론 일워뉴스 ilwar.com" />
 			</label>
 			<input type="submit" class="button" value="기레기 생성!" accesskey="s" />
 			<input type="button" class="button" id="erase_all" value="모두 지우기" accesskey="e" />
 			<div class="credit">
-				Created by <a href="http://rainygirl.com" target="_blank">rainygirl</a><br />
-				<a href="http://github.com/rainygirl/giregi" target="_new"><img style="width: 16px; height: 16px" src="https://help.github.com/assets/images/site/invertocat.png" /> GitHub</a>
+				Created by <a href="http://rainygirl.com" target="_new">rainygirl</a><br />
+				<a href="http://github.com/rainygirl/giregi" target="_new">
+					<img width="16" height="16" src="https://help.github.com/assets/images/site/invertocat.png" />
+					GitHub
+				</a>
 			</div>
 		</form>
 
@@ -146,17 +212,30 @@
 			var $ = function(a) {
 				return document.getElementById(a);
 			}
+			var next = 0, form = $('giregi_form');
 			$('giregi_form').onsubmit = function() {
-				var n = giregi({title: $('ftitle').value,
-					  text: $('ftext').value,
-					  nick: $('fnick').value,
-					  day: '최근',
-					  sitename: $('fsite').value,
-					  header: $('fheader').value,
-					  team: $('fteam').value,
-					  copyright: $('fcopyright').value
-				});
-				n = '<p>' + n.replace(/\n/g, '</p><p>') + '</p>';
+				var name = "giregi_" + (next++).toString(36),
+					n = giregi({title: $('ftitle').value,
+						text: $('ftext').value,
+						nick: $('fnick').value,
+						day: '최근',
+						sitename: $('fsite').value,
+						header: $('fheader').value,
+						team: $('fteam').value,
+						copyright: $('fcopyright').value,
+						feelings: {
+							funny: $('ffun').checked,
+							happy: $('fhappy').checked,
+							amazed: $('fam').checked,
+							sad: $('fsad').checked,
+							upset: $('fupset').checked,
+							nonsense: $('fns').checked
+						},
+						comments: $('fcmt').value,
+					});
+				// Do NOT erase <a> tag, <a> 태그 지우지 마세요.
+				// which is necessary for locating the generated news by hash. # 해시로 생성된 기사로 스크롤하는 데에 필요합니다.
+				n = '<a id="' + name + '" name="' + name + '">&nbsp;</a><p>' + n.replace(/\r\n?|\n/g, '</p>\n<p>') + '</p>';
 
 				if (!$('result')) {
 					var t = document.createElement('div');
@@ -166,21 +245,22 @@
 				} else {
 					document.getElementById('result').innerHTML = n;
 				}
-				window.scrollTo(0, 5000);
+				location.hash = "#" + name;
 				return false;
 			}
 			$('erase_all').onclick = function() {
-				var i = 0, e;
+				var i, e;
+				next = 0;
 				if ($('result')) {
 					$('result').innerHTML = "";
 					return;
 				}
 				if (document.getElementsByClassName) {
 					var l = document.getElementsByClassName("result");
-					for (; i < l.length; l[i++].remove());
+					for (i = l.length; i > 0; l[--i].remove());
 					return;
 				}
-				for (; i < document.all.length; i++) {
+				for (i = document.all.length - 1; i >= 0; i--) {
 					e = document.all[i];
 					if (e.className == "result") e.remove();
 				}

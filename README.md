@@ -1,4 +1,4 @@
-# 기레기 버튼
+# 기레기 버튼 (자동 인터넷 기사 생성기)
 
 [**데모 체험**](http://htmlpreview.github.io/?https://github.com/rainygirl/giregi/blob/master/index.html) | [**일간워스트에서 체험**](http://ilwar.com/recent)
 
@@ -33,19 +33,31 @@
 
 ~~~~
 var s = giregi({
-                title: 제목(String),
-                text: 내용(String),
-                nick: 글쓴이 이름(String),
-                day: 날짜(String),
-                sitename: 사이트명(String)
-               });
+                header: 헤드라인(String, default: '서울=일워뉴스')
+                title: 제목(String, default: '기레기 버튼'),
+                text: 내용(String, default: '길들인 코끼리를 순천부 장...'),
+                nick: 글쓴이 이름(String, default: '병조판서 유정현'),
+                day: 날짜(String, default: '최근'),
+                sitename: 사이트명(String, default: '커뮤니티 일간워스트'),
+                team: 팀명(String, default: '온라인이슈팀'),
+                copyright: 저작권(String, default: '정론직필 정통언론 일워뉴스 ilwar.com'),
+                feelings: { // 이 글에 대한 네티즌의 반응(감정), 중복 가능
+                  happy: 행복함?(Boolean, default: false),
+                  funny: 웃김?(Boolean, default: true),
+                  amazed: 놀라움?(Boolean, default: false),
+                  sad: 슬픔?(Boolean, default: false),
+                  upset: 화남?(Boolean, default: false),
+                  nonsense: 황당?(Boolean, default: false)
+                },
+                comments: 기타 네티즌들의 반응(String, default: '이게 뭐지. 놀라워요. 처음 본다.')
+        });
 ~~~~
 
-## Credits
+## Credits and references
 * [rainygirl](http://rainygirl.com)
 * [@rainygirl_](https://twitter.com/rainygirl_)
 * [일간워스트 공지](http://ilwar.com/notice/172108)
 
 ## License
-* MIT
+* The MIT License (included in the repository)
 * 자유롭게 수정해서 더 채워주세요!
